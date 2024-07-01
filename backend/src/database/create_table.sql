@@ -11,10 +11,9 @@ CREATE TABLE IF NOT EXISTS corrector (
 
 CREATE TABLE IF NOT EXISTS correction (
   id SERIAL PRIMARY KEY,
-  corrector_id INT NOT NULL,
+  corrector_id INT REFERENCES corrector(id) ON DELETE CASCADE,
   class VARCHAR(50) NOT NULL,
   module VARCHAR(50) NOT NULL,
   meeting VARCHAR(50) NOT NULL,
-  student VARCHAR(50) NOT NULL,
-  FOREIGN KEY (correctorId) REFERENCES corrector (id)
+  student VARCHAR(50) NOT NULL, 
 )
