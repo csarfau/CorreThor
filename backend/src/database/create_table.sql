@@ -1,0 +1,20 @@
+CREATE TABLE IF NOT EXISTS "admin" (
+  id SERIAL PRIMARY KEY,
+  token VARCHAR(32) NOT NULL,
+  name VARCHAR(50) NOT NULL
+)
+
+CREATE TABLE IF NOT EXISTS corrector (
+  id SERIAL PRIMARY KEY,
+  name VARCHAR(50)
+)
+
+CREATE TABLE IF NOT EXISTS correction (
+  id SERIAL PRIMARY KEY,
+  corrector_id INT NOT NULL,
+  class VARCHAR(50) NOT NULL,
+  module VARCHAR(50) NOT NULL,
+  meeting VARCHAR(50) NOT NULL,
+  student VARCHAR(50) NOT NULL,
+  FOREIGN KEY (correctorId) REFERENCES corrector (id)
+)
