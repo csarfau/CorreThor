@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 
-export default class CorrectionController {
+export default class {
   static async listCorrectionsByCorrectorId(req: Request, res:Response): Promise<void> {
     try {
       
