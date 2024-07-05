@@ -1,18 +1,21 @@
 import { Router } from "express";
+import AdminController from "../controllers/adminController";
+import CorrectorController from "../controllers/correctorController";
+import CorrectionController from "../controllers/correctionController";
 
 const router: Router = Router();
 
-router.get("/", (req, res) => res.json("Rota all desprotegida"));
-router.get("/admin", (req, res) => res.json("Rota getadmin protegida"));
+router.get("/", (req, res) => {"API Funcionando!"});
+router.get("/admin", AdminController.getAdmin);
 
-router.get("/correctors", (req, res) => res.json("Rota get correctors protegida"));
-router.post("/correctors", (req, res) => res.json("Rota post correctors protegida"));
-router.put("/correctors/:correctorId", (req, res) => res.json("Rota put correctors protegida"));
-router.delete("/correctors/:correctorId", (req, res) => res.json("Rota delete correctors protegida"));
+router.get("/correctors", CorrectorController.listCorrectors);
+router.post("/correctors", CorrectorController.createCorrector);
+router.put("/correctors/:correctorId", CorrectorController.updateCorrector);
+router.delete("/correctors/:correctorId", CorrectorController.deleteCorrector);
 
-router.get("/corrections/:correctorId ", (req, res) => res.json("Rota get corrections protegida"));
-router.post("/corrections", (req, res) => res.json("Rota post corrections protegida"));
-router.put("/corrections/:correctionId", (req, res) => res.json("Rota put corrections protegida"));
-router.delete("/corrections/:correctionId", (req, res) => res.json("Rota delete corrections protegida"));
+router.get("/corrections/:correctorId", CorrectionController.listCorrectionsByCorrectorId);
+router.post("/corrections", CorrectionController.createCorrection);
+router.put("/corrections/:correctionId", CorrectionController.updateCorrection);
+router.delete("/corrections/:correctionId", CorrectionController.deleteCorrection);
 
 export default router;
