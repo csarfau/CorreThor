@@ -6,10 +6,12 @@ import dbConnection from "./database/connection";
 dotenv.config();
 
 const app: Express = express();
-
 app.use(express.json());
+
 app.use("/correthor", routes);
 
-app.listen(process.env.PORT || 3000, () => {
-	console.log(`Server is running on http://localhost:${process.env.PORT || 3000}`);
+const PORT = process.env.PORT || 3000;
+
+app.listen(PORT, () => {
+	console.log(`Server is running on http://localhost:${PORT}`);
 });
