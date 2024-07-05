@@ -1,7 +1,7 @@
 import { Router } from "express";
-import AdminController from "../controllers/adminController";
-import CorrectorController from "../controllers/correctorController";
-import CorrectionController from "../controllers/correctionController";
+import AdminController from "../controllers/AdminController";
+import CorrectorController from "../controllers/CorrectorController";
+import CorrectionController from "../controllers/CorrectionController";
 
 const router: Router = Router();
 

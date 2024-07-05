@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 
 export default class {
-  static async getAdmin(req: Request, res: Response): Promise<void> {
+  static getAdmin(req: Request, res: Response) {
     try {
       
     } catch (error) {

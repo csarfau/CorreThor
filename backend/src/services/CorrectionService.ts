@@ -1,7 +1,7 @@
 import { ICorrection, ICorrector } from "../interfaces/interfaces";
 
 export default class {
-  static async listCorrectionsByCorrectorId(correctorId: Partial<ICorrector>): Promise<void> {
+  static listCorrectionsByCorrectorId(correctorId: Partial<ICorrector>) {
     try {
       
     } catch (error) {
@@ -9,21 +9,21 @@ export default class {
     }
   }
 
-  static async createCorrection(correction: ICorrection): Promise<void> {
+  static createCorrection(correction: ICorrection) {
     try {
       
     } catch (error) {
       
     }
   }
-  static async updateCorrection(correction: ICorrection): Promise<void> {
+  static updateCorrection(correction: ICorrection) {
     try {
       
     } catch (error) {
       
     }
   }
-  static async deleteCorrection(correctionId: Partial<ICorrection>): Promise<void> {
+  static deleteCorrection(correctionId: Partial<ICorrection>) {
     try {
       
     } catch (error) {

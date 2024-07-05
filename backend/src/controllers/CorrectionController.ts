@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 
 export default class {
-  static async listCorrectionsByCorrectorId(req: Request, res:Response): Promise<void> {
+  static listCorrectionsByCorrectorId(req: Request, res:Response) {
     try {
       
     } catch (error) {
@@ -9,21 +9,21 @@ export default class {
     }
   }
 
-  static async createCorrection(req: Request, res: Response): Promise<void> {
+  static createCorrection(req: Request, res: Response) {
     try {
       
     } catch (error) {
       
     }
   }
-  static async updateCorrection(req: Request, res: Response): Promise<void> {
+  static updateCorrection(req: Request, res: Response) {
     try {
       
     } catch (error) {
       
     }
   }
-  static async deleteCorrection(req: Request, res: Response): Promise<void> {
+  static deleteCorrection(req: Request, res: Response) {
     try {
       
     } catch (error) {
