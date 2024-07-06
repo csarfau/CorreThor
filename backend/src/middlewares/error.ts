@@ -9,6 +9,8 @@ export const errorMiddleware = (
   next: NextFunction
 ) => {
   const statusCode = error.statusCode ?? 500;
+  console.log(error);
+  
   const message = error.statusCode ? error.message : "Internal Server Error";
   const response: Partial<IAPIResponse<null>> = {
     data: null,
