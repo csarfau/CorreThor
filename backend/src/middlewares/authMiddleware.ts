@@ -2,7 +2,7 @@ import { NextFunction, Request, Response } from "express";
 import { BadRequestError, Unauthorized } from "../helpers/ApiErrors";
 import AdminRepository from "../repositories/AdminRepository";
 
-export const authMiddleware = (req: Request, res: Response, next: NextFunction) => {
+export const authMiddleware = async (req: Request, res: Response, next: NextFunction) => {
   const authHeader = req.headers['authorization'];
 
   if(!authHeader) {
@@ -10,12 +10,12 @@ export const authMiddleware = (req: Request, res: Response, next: NextFunction) 
   }
 
   const token = authHeader.split(' ')[1];
-  const admin = AdminRepository.getAdmin(token);
+  const admin = await AdminRepository.getAdmin(token);
 
   if(!admin) {
     throw new Unauthorized("Token inválido");
   }
 
-  req.body = admin;
+  req.body.admin = admin;
   next();
 }

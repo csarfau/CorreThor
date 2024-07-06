@@ -2,20 +2,21 @@ import { Router } from "express";
 import AdminController from "../controllers/AdminController";
 import CorrectorController from "../controllers/CorrectorController";
 import CorrectionController from "../controllers/CorrectionController";
+import { authMiddleware } from "../middlewares/authMiddleware";
 
 const router: Router = Router();
 
-router.get("/", (req, res) => {"API Funcionando!"});
-router.get("/admin", AdminController.getAdmin);
+router.get("/", (req, res) => res.send("API Funcionando!"));
+router.get("/admin", authMiddleware, AdminController.getAdmin);
 
-router.get("/correctors", CorrectorController.listCorrectors);
-router.post("/correctors", CorrectorController.createCorrector);
-router.put("/correctors/:correctorId", CorrectorController.updateCorrector);
-router.delete("/correctors/:correctorId", CorrectorController.deleteCorrector);
+router.get("/correctors", authMiddleware, CorrectorController.listCorrectors);
+router.post("/correctors", authMiddleware, CorrectorController.createCorrector);
+router.put("/correctors/:correctorId", authMiddleware, CorrectorController.updateCorrector);
+router.delete("/correctors/:correctorId", authMiddleware, CorrectorController.deleteCorrector);
 
-router.get("/corrections/:correctorId", CorrectionController.listCorrectionsByCorrectorId);
-router.post("/corrections", CorrectionController.createCorrection);
-router.put("/corrections/:correctionId", CorrectionController.updateCorrection);
-router.delete("/corrections/:correctionId", CorrectionController.deleteCorrection);
+router.get("/corrections/:correctorId", authMiddleware, CorrectionController.listCorrectionsByCorrectorId);
+router.post("/corrections", authMiddleware, CorrectionController.createCorrection);
+router.put("/corrections/:correctionId", authMiddleware, CorrectionController.updateCorrection);
+router.delete("/corrections/:correctionId", authMiddleware, CorrectionController.deleteCorrection);
 
 export default router;

@@ -1,3 +1,5 @@
+import { ApiError } from "../helpers/ApiErrors"
+
 export interface IAdmin {
   id: number,
   token: string,
@@ -20,5 +22,5 @@ export interface ICorrection {
 
 export interface IAPIResponse<T> {
   data: T | null,
-  err: Error | null
+  err: Partial<ApiError> | null
 }
