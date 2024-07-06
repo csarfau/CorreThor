@@ -3,10 +3,18 @@ import AdminController from "../controllers/AdminController";
 import CorrectorController from "../controllers/CorrectorController";
 import CorrectionController from "../controllers/CorrectionController";
 import { authMiddleware } from "../middlewares/authMiddleware";
+import { IAPIResponse } from "../interfaces/interfaces";
 
 const router: Router = Router();
 
-router.get("/", (req, res) => res.send("API Funcionando!"));
+router.get("/", (req, res) => {
+  const response: IAPIResponse<Object> = {
+    data: { "ok": "true" },
+    err: null,
+  }
+  res.status(200).json(response);
+});
+
 router.get("/admin", authMiddleware, AdminController.getAdmin);
 
 router.get("/correctors", authMiddleware, CorrectorController.listCorrectors);

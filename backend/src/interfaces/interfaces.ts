@@ -13,7 +13,7 @@ export interface ICorrector {
 
 export interface ICorrection {
   id: number,
-  correctorId: number,
+  corrector_id: number,
   class: string,
   module: string,
   meeting: string,
