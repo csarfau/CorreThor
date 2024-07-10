@@ -10,6 +10,11 @@ export const authMiddleware = async (req: Request, res: Response, next: NextFunc
   }
 
   const token = authHeader.split(' ')[1];
+  
+  if (!token) {
+    throw new BadRequestError('Token não informado!');
+  }
+
   const admin = await AdminRepository.getAdmin(token);
 
   if(!admin) {
