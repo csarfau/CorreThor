@@ -17,5 +17,6 @@ export const authMiddleware = async (req: Request, res: Response, next: NextFunc
   }
 
   req.body.admin = admin;
+  req.body.admin.token = token;
   next();
 }
