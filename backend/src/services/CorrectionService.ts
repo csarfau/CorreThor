@@ -10,10 +10,6 @@ export default class {
       correctorId
     );
 
-    if (corrections.length === 0) {
-      throw new NotFound("Corretor não encontrado");
-    }
-
     return corrections;
   }
 

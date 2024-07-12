@@ -20,8 +20,9 @@ export default class {
   }
 
   static async createCorrection(req: Request, res: Response) {
-    const { correctorId, class: className, module, meeting, student } = req.body;
-
+    const { correctorId, className, module, meeting, student } = req.body;
+    console.log(req.body);
+    
     if(correctorId === "" || null) {
       throw new BadRequestError("Corretor não informado");
     }
@@ -56,7 +57,7 @@ export default class {
       throw new BadRequestError("Corretor inválido");
     }
 
-    const { correctorId, class: className, module, meeting, student } = req.body;
+    const { correctorId, className, module, meeting, student } = req.body;
 
     if(correctorId === "" || null) {
       throw new BadRequestError("Corretor não informado");
