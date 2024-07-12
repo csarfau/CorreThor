@@ -1,6 +1,6 @@
 # CorreThor
 
-Aplicação criada para ter um controle de corretores e correções associadas a eles de forma prática.
+Aplicação criada utilizando Next.js e Express, com typescript para o desenvolvimento do lado do servidor, e React do lado do cliente.
 
 ## Índice
 
