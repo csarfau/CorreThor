@@ -6,7 +6,7 @@ Aplicação criada para ter um controle de corretores e correções associadas a
 
 - [Sobre](#sobre)
 - [Instalação](#instalação)
-- [Pré-requisitos](#pre-requisitos)
+- [Pre-requisitos](#pre-requisitos)
 - [Passos](#passos)
 - [Tecnologias Utilizadas](#tecnologias-utilizadas)
 
@@ -20,7 +20,7 @@ A aplicação se resume em um controle de corretores e correções, feitas por u
 
 Para a instalação do projeto, você pode seguir o passo a passo a seguir.
 
-### Pré-requisitos
+### Pre-requisitos
 
 - Node.js
 - Npm
