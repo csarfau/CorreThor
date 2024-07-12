@@ -21,7 +21,7 @@ export default class {
   }
 
   static async deleteCorrector(correctorId: number): Promise<ICorrector> {
-    const query = `DELETE FROM corrector WHERE id = $1`;
+    const query = `DELETE FROM corrector WHERE id = $1 RETURNING *`;
     const { rows } = await dbConnection.query(query, [correctorId]);
     return rows[0];
   }
