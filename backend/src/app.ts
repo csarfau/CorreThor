@@ -13,7 +13,6 @@ const app: Express = express();
 app.use(express.json());
 app.use(cors());
 
-app.use(delay);
 app.use("/correthor", router);
 
 const PORT = process.env.PORT || 3000;
