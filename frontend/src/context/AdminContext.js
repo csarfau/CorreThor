@@ -7,12 +7,12 @@ export const AdminProvider = ({ children }) => {
   const [token, setToken] = useState("");
   const [error, setError] = useState("");
 
-  const login = async (token) => {
+  const login = async (tokenV) => {
     try {
       const response = await fetch("http://localhost:3001/correthor/admin", {
         method: "GET",
         headers: {
-          Authorization: `Bearer ${token}`,
+          Authorization: `Bearer ${tokenV}`,
           "Content-Type": "application/json",
         },
       });

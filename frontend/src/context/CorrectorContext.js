@@ -26,7 +26,7 @@ export const CorrectorProvider = ({ children }) => {
 
       if (response.status !== 200) {
         const { err } = await response.json();
-        throw err.message;
+        throw err;
       }
 
       const data = await response.json();
@@ -34,7 +34,7 @@ export const CorrectorProvider = ({ children }) => {
       return data;
 
     } catch (err) {
-      setError(err);
+      return {err};
     }
   };
 
@@ -51,16 +51,15 @@ export const CorrectorProvider = ({ children }) => {
   
       if (response.status !== 201) {
         const { err } = await response.json();
-        throw err.message;
+        throw err;
       }
   
-      setError("");
       const data = await response.json();
       setCreateData(data);
       return data;
 
     } catch (err) {
-      setError(err);
+      return {err};
     }
   };
 
@@ -77,16 +76,15 @@ export const CorrectorProvider = ({ children }) => {
   
       if (response.status !== 200) {
         const { err } = await response.json();
-        throw err.message;
+        throw err;
       }
   
-      setError("");
       const data = await response.json();
       setUpdateData(data);
       return data;
 
     } catch (err) {
-      setError(err);
+      return {err};
     }
   };
 
@@ -102,16 +100,15 @@ export const CorrectorProvider = ({ children }) => {
   
       if (response.status !== 200) {
         const { err } = await response.json();
-        throw err.message;
+        throw err;
       }
 
-      setError("");
       const data = await response.json();
       setDeleteData(data);
       return data;
 
     } catch (err) {
-      setError(err);
+      return {err};
     }
   };
 
@@ -127,16 +124,15 @@ export const CorrectorProvider = ({ children }) => {
 
       if (response.status !== 200) {
         const { err } = await response.json();
-        throw err.message;
+        throw err;
       }
 
-      setError("");
       const { data } = await response.json();
       setListData(data);
       return data;
 
     } catch (err) {
-      setError(err);
+      return {err};
     }
   }
 

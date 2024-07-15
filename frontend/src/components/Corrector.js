@@ -26,35 +26,51 @@ export default function Corrector() {
 
   const handleCreate = async () => {
     setLoading(true);
-    await create(correctorName);
-    if(error) return;
-    handleClose();
-    setCorrectorName("");
-    fetchData();
+    const response = await create(correctorName);
+    if(response.err) {
+      setError(response.err.message)
+      setLoading(false);
+      return;
+    }
+
+    const newData = await fetchData();
+
+    const selectedCorrector = newData.find((corrector) => corrector.name === correctorName); //testar
+    setSelectedId(selectedCorrector ? selectedCorrector.id : '');
+
     setError(null);
-    setLoading(false);
+    handleClose();
   }
 
   const handleEdit = async (id) => {
     setLoading(true);
-    await edit(id, correctorName);
-    if(error) return;
-    handleClose();
-    setCorrectorName("");
-    fetchData();
+    const response = await edit(id, correctorName);
+    if(response.err) {
+      setError(response.err.message)
+      setLoading(false);
+      return;
+    }
+    
+    await fetchData();
     setError(null);
-    setLoading(false);
+    setSelectedName(correctorName);
+    handleClose();
   }
 
   const handleDelete = async (id) => {
     setLoading(true);
-    await destroy(id);
-    if(error) return;
-    handleClose();
-    setCorrectorName("");
-    fetchData();
+    const response = await destroy(id);
+    if(response.err) {
+      setError(response.err.message)
+      setLoading(false);
+      return;
+    }
+
+    setSelectedId(null);
+    setCorrections([]);
+    await fetchData();
     setError(null);
-    setLoading(false);
+    handleClose();
   }
 
   const handleClickOpen = (type) => {
@@ -85,8 +101,9 @@ export default function Corrector() {
     setLoading(true);
     const data = await list();
     setDataList(data);
-    setCorrectorName();
+    setCorrectorName("");
     setLoading(false);
+    return data;
   };
 
   React.useEffect(() => {
@@ -136,10 +153,10 @@ export default function Corrector() {
                 </Select>
               </Box>
             </FormControl>
-            <Button color="primary" variant="outlined" startIcon={<EditIcon />} onClick={() => {handleClickOpen(2)}}>
+            <Button disabled={!selectedId} color="primary" variant="outlined" startIcon={<EditIcon />} onClick={() => {handleClickOpen(2)}}>
               Editar Corretor
             </Button>
-            <Button color="error" variant="outlined" startIcon={<DeleteIcon />} onClick={() => {handleClickOpen(3)}}>
+            <Button disabled={!selectedId} color="error" variant="outlined" startIcon={<DeleteIcon />} onClick={() => {handleClickOpen(3)}}>
               Deletar Corretor
             </Button>
           </CardActions>
@@ -165,12 +182,15 @@ export default function Corrector() {
               type="text"
               fullWidth
               variant="standard"
-              onChange={(e) => setCorrectorName(e.target.value)}
+              onChange={(e) => {
+                setCorrectorName(e.target.value);
+                setError(null);
+              }}
             />
           </DialogContent>
           <DialogActions>
             <Button onClick={() => {handleClose(); setError(null); setCorrectorName("");}}>Cancelar</Button>
-            {loading ? (<CircularProgress size={24} />) : <Button onClick={handleCreate}>Salvar</Button>}
+            {loading ? (<CircularProgress size={24} />) : <Button onClick={handleCreate} disabled={!!error}>Salvar</Button>}
           </DialogActions>
           {error && (
             <Alert variant="filled" severity="error" sx={{margin: 2}}>
@@ -235,7 +255,7 @@ export default function Corrector() {
             <CircularProgress size={24} />
           </CardContent>
         </Card>
-      </Paper>) : <Corrections data={corrections} correctorId={selectedId} setLoading/>
+      </Paper>) : <Corrections data={corrections} correctorId={selectedId}/>
     } 
     </>
   );
