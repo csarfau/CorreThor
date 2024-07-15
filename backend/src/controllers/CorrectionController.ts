@@ -23,23 +23,23 @@ export default class {
     const { correctorId, className, module, meeting, student } = req.body;
     console.log(req.body);
     
-    if(correctorId === "" || null) {
+    if(!correctorId) {
       throw new BadRequestError("Corretor não informado");
     }
 
-    if(className === "" || null) {
+    if(!className) {
       throw new BadRequestError("Turma não informada");
     }
 
-    if(module === "" || null) {
+    if(!module) {
       throw new BadRequestError("Módulo não informado");
     }
 
-    if(meeting === "" || null) {
+    if(!meeting) {
       throw new BadRequestError("Aula não informada");
     }
     
-    if(student === "" || null) {
+    if(!student) {
       throw new BadRequestError("Aluno não informado");
     }
 

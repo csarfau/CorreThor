@@ -31,15 +31,13 @@ export default class {
 
   static async updateCorrection(
     correctionId: number,
-    correctorId: number,
     className: string,
     module: string,
     meeting: string,
     student: string): Promise<ICorrection> {
-    const query = `UPDATE correction SET corrector_id = $1, "class" = $2, module = $3, 
-    meeting = $4, student = $5 WHERE id = $6 RETURNING *`;
+    const query = `UPDATE correction SET "class" = $1, module = $2, 
+    meeting = $3, student = $4 WHERE id = $5 RETURNING *`;
     const { rows } = await dbConnection.query(query, [
-      correctorId,
       className,
       module,
       meeting,

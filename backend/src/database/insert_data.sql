@@ -6,10 +6,10 @@ BEGIN
     (encode(gen_random_bytes(16), 'hex'), 'Vitor Arruda'),
     (encode(gen_random_bytes(16), 'hex'), 'Kenji Taniguchi');
 
-    INSERT INTO corrector (id, name) VALUES 
-    (1, 'Cesar Faustino'),
-    (2, 'Adrian Roger'),
-    (3, 'Carlos Eduardo');
+    INSERT INTO corrector (name) VALUES 
+    ('Cesar Faustino'),
+    ('Adrian Roger'),
+    ('Carlos Eduardo');
 
     INSERT INTO correction (corrector_id, class, module, meeting, student) VALUES
     (1, 'Turma 5', 'Typescript', 'Aula 5', 'Murilo'),

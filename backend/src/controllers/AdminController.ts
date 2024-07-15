@@ -5,6 +5,8 @@ import { IAdmin, IAPIResponse } from "../interfaces/interfaces";
 export default class {
   static async getAdmin(req: Request, res: Response) {
     const token = req.body.admin.token;
+    console.log(token);
+    
     if(token) {
       const admin = await AdminService.getAdmin(token);
       const response: IAPIResponse<IAdmin> = {

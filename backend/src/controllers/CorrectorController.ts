@@ -15,7 +15,7 @@ export default class {
 
   static async createCorrector(req: Request, res: Response) {
     const { name } = req.body;
-    if(name === "" || null) {
+    if(!name) {
       throw new BadRequestError("Nome do corretor não informado");
     }
     

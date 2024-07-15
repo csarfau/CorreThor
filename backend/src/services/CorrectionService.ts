@@ -50,7 +50,6 @@ export default class {
 
       const updatedCorrection = await CorrectionRepository.updateCorrection(
         correctionId,
-        correctorId,
         className,
         module,
         meeting,

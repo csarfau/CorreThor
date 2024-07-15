@@ -24,8 +24,8 @@ router.put("/correctors/:correctorId", authMiddleware, CorrectorController.updat
 router.delete("/correctors/:correctorId", authMiddleware, CorrectorController.deleteCorrector);
 
 router.get("/corrections/:correctorId", delay, authMiddleware, CorrectionController.listCorrectionsByCorrectorId);
-router.post("/corrections", authMiddleware, CorrectionController.createCorrection);
-router.put("/corrections/:correctionId", authMiddleware, CorrectionController.updateCorrection);
-router.delete("/corrections/:correctionId", authMiddleware, CorrectionController.deleteCorrection);
+router.post("/corrections", delay, authMiddleware, CorrectionController.createCorrection);
+router.put("/corrections/:correctionId", delay, authMiddleware, CorrectionController.updateCorrection);
+router.delete("/corrections/:correctionId", delay, authMiddleware, CorrectionController.deleteCorrection);
 
 export default router;
